@@ -117,7 +117,7 @@ body {
       <input type="text" placeholder="Email"/>
       <input type="text" placeholder="Phone number"/>
       <button>sign up</button>
-      <p class="message">Have an account? <a href="index.php">
+      <p class="message">Have an account? <a href="index.html">
       sign in</a></p>
     </form>
   </div>
