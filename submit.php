@@ -1,25 +1,31 @@
 <?php
-require_once('connect.php');
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $name = $_POST['name'];
-    $password = $_POST['password'];
-    $email = $_POST['email'];
-    $phone = $_POST['phone'];
-
-    $user = "INSERT INTO  login (name, password, email, phone) VALUES ('$name', '$password', '$email','$phone')";
-    if(mysqli_query($conn,$user)){
-      echo "<div>
+	include('creatingdb.php'); 
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		insertfun();
+	}
+	function insertfun(){
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$passwordnew = $_POST['pass'];
+		$number = $_POST['phonenum'];
+		$servername = "localhost";
+		$username = "root";
+		$password = "";
+		$dbname = "mydb";
+		$conn = mysqli_connect($servername, $username, $password, $dbname);
+		$sql = "INSERT INTO mylogin1 (name, email, password,phonenumber)
+			VALUES ('$name', '$email', '$passwordnew', '$number')";
+		if (mysqli_query($conn, $sql)) {
+  			echo "<div>
         <h2>Successfully registered</h2>
         <h3>Name  : $name</h3>
-        <h3>password  : $password</h3>
+        <h3>password  : $passwordnew</h3>
         <h3>email  : $email</h3>
-        <h3>phone  : $phone</h3>
-      </div>"
-    }
-    else{
-        "not successfull";
-    }
-}
+        <h3>phone  : $number</h3>
+      </div>";
+		}
+	}
+
 ?>
 <!DOCTYPE html>
 <head>
