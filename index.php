@@ -1,20 +1,3 @@
-<?php
-session_start();
-require('connect.php');
-
-if($_SERVER['REQUEST_METHOD']=='POST'){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $user = "SELECT * FROM login WHERE email='$email' AND password='$password' ";
-    $result = mysqli_query($conn,$user);
-    if(mysqli_num_rows($result)==1){
-        echo "<h3>Successfully logged in</h3>";
-    }
-    else{
-        echo "<h3>Invalid user</h3>";
-    }
-}
-?>
 <!DOCTYPE html>   
 <html>   
 <head>  
@@ -126,7 +109,7 @@ body {
 <body>    
 <div class="login-page">
   <div class="form">
-    <form class="login-form">
+    <form class="login-form" action="afterlogin.php" method="post">
       <input type="text" placeholder="username"/>
       <input type="password" placeholder="password"/>
       <button>login</button>
