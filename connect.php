@@ -1,22 +1,23 @@
 <?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "mydb";
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "registration_db";
+// Create connection
+$conn = new mysqli($servername,$username, $password,$dbname);
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-    if(!$conn){
-        die("Could not connect to" . mysqli_connect_error());
-    }
-
-    $sql = "CREATE TABLE login(
-        id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-        name VARCHAR(200) NOT NULL,
-        password VARCHAR(200) NOT NULL,
-        email VARCHAR(200),
-        phone INT(20)
-        )";    
+// sql to create table
+$sql = "CREATE TABLE mylogin1 (
+id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(100) NOT NULL,
+email VARCHAR(100) NOT NULL,
+password VARCHAR(100) NOT NULL,
+phonenumber VARCHAR(10) NOT NULL
+)";
 
 ?>
